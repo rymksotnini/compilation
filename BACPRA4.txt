@@ -1,0 +1,77 @@
+program QCU;
+
+var
+i,n:integer;
+question,reponse:string;
+Q,R:array[1..10] of string;
+procedure ConvMaj(var ch:string);
+var
+j:integer;
+begin
+for j:=1 to length(ch) do
+        begin
+        ch[j]:=upcase(ch[j]);
+        end;
+end;
+procedure Resultat(Q,R:tab;n:integer);
+var
+nb,points,j:integer;
+
+begin
+nb:=0         ;
+points:=0    ;
+for j:=1 to n do
+        begin
+        if copy(Q[j],pos('#',Q[j])+1,4)=R[j] then
+                                                        begin
+                                                        nb:=nb+1;
+                                                        points:=points+2;
+                                                        end
+        else points:=points+2 ;
+        end;
+writeln('le nbre total de points obtenus est: ',points);
+writeln('le taux de réussite est ',((nb/n) *100):5:2,' %');
+end;
+begin
+repeat
+        writeln('donner le nombre de questions:');
+        readln(n);
+until n in [1..10];
+for i:=1 to n do
+        begin
+        repeat
+                writeln('donner la proposition relative … la question n: ',i);
+                readln(question);
+        until( question[1] in ['A'..'Z']) and ( length(question)>=4 );
+        repeat
+                writeln('donner la viladation de la proposition n: ',i);
+                readln(reponse);
+                ConvMaj(reponse);
+        until (reponse='VRAI') or (reponse='FAUX');
+        Q[i]:=question+'#'+reponse;
+        end;
+for i:=1 to n do
+        begin
+        repeat
+                writeln('donner votre r‚pnse … la question n:',i);
+                readln(R[i]);
+                ConvMaj(R[i]);
+        until (R[i]='VRAI') or (R[i]='FAUX');
+        end;
+Resultat(Q,R,n);
+end.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

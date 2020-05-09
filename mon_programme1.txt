@@ -1,0 +1,17 @@
+/* function declaration without var */
+program HelloWorld;
+var x,y:integer;
+function fonc(x:integer;z:integer):integer;
+var w,k:integer;
+begin
+end;
+procedure hello(x:integer);
+begin
+fonc(x);
+writeln('hello');
+end;
+begin
+writeln('Hello World');
+readln;
+end.
+

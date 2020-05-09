@@ -1,0 +1,11 @@
+programm Test;
+var x y :inttt;
+
+function fonc(x int):int;
+begin
+end;
+
+begin 
+if x then x=1 ele x:=2
+end.
+/* little by little */
